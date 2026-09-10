@@ -1,0 +1,249 @@
+## Bucle for
+
+"""
+Con la lista horas_estudio = [2, 3, 1, 4, 2, 5, 3] (horas estudiadas cada día de la semana),calcula e imprime el total de horas estudiadas y el promedio diario, redondeado a 1 decimal. Nota: Cambiamos el 3 por el 4 para comprobar el resultado y el contador dio 2.
+"""
+
+horas_estudio = [2, 3, 1, 4, 2, 5, 3]
+
+total = 0 
+for h in horas_estudio:
+    total += h
+
+promedio = total / len(horas_estudio)
+print("Total de horas:", total)
+print("Promedio diario:", round(promedio, 1))
+
+contador = 0
+for h in horas_estudio:
+    if h >= 3:
+        contador += 1
+print("Días con 3 horas o más:", contador)
+
+
+## Bucle while
+
+"""
+Simula un plan de ahorro: empiezas con $0 y ahorras $45 cada semana. Usa while para saber cuántas semanas completas necesitas para alcanzar al menos $300, e imprime el número de semanas y el ahorro final acumulado. Nota:Hicimos el cambio a $60 por semana para que el resultado sea más rápido de calcular y nos dio 5 semanas.
+"""
+
+ahorro = 0
+semanas = 0
+while ahorro < 300:
+    ahorro += 60
+    semanas += 1
+
+print("Semanas necesarias:", semanas)
+print("Ahorro final:", ahorro)
+
+### Funciones
+
+"""
+Escribe una función calcular_costo_envio(peso, distancia) que calcule el costo de un envío con la
+fórmula: peso * 0.5 + distancia * 0.1 . Llámala con un paquete de 12 kg que viaja 80 km, e imprime
+el resultado redondeado a 2 decimales.
+"""
+
+def calcular_costo_envio(peso, distancia):
+    costo = peso * 0.5 + distancia * 0.1
+    return costo
+resultado = calcular_costo_envio(12, 80)
+print(f"Costo: {round(resultado, 2)}")
+
+"""
+Escribe una segunda función clasificar_envio(costo) que reciba un costo y devuelva "Económico" si
+es menor a 10, "Estándar" si es de 10 a 24.99, y "Premium" si es 25 o más. Llámala con el resultado de la
+parte A. Nota: Si cambio el costo a 30, me devuelve Premium. 
+"""
+def clasificar_envio(costo):
+    if costo < 10:
+        return "Económico"
+    elif 10 <= costo < 25:
+        return "Estándar"
+    else:
+        return "Premium"
+
+print(clasificar_envio(resultado))
+
+### Listas: creación, acceso y slicing
+
+"""
+Con la lista peliculas de 6 títulos, imprime la lista completa, la primera película, la última (con índice negativo), las primeras 3 (con slicing), y cuántas películas hay en total.
+"""
+
+peliculas = ["Coco", "Interstelar", "Matrix", "Toy Story", "Origen", "Encanto"]
+print(peliculas)
+print(peliculas[0])
+print(peliculas[-1])
+print(peliculas[:3])
+print(len(peliculas))
+
+"""
+Usando slicing con paso, imprime las películas en las posiciones pares (0, 2, 4). Después imprime las
+películas desde la posición 1 hasta la 3 (sin incluir la 4).
+"""
+print(peliculas[::2])  
+print(peliculas[1:4])  
+
+## Metodos de listas
+
+"""
+Empieza con carrito = ["pantalon", "camisa"] . Agrega "zapatos" al final, agrega "cinturon" en la
+posición 1, quita "pantalon", verifica si "camisa" sigue en el carrito, y por último ordena el carrito
+alfabéticamente. Imprime el carrito después de cada paso.
+"""
+
+carrito = ["pantalon", "camisa"]
+
+carrito.append("zapatos")
+print(carrito)
+
+carrito.insert(1, "cinturon")
+print(carrito)
+
+carrito.remove("pantalon")
+print(carrito)
+
+print("camisa" in carrito)
+
+carrito.sort()
+print(carrito)
+
+## Listas anidadas
+
+"""
+Con el mapa de asientos asientos (una cuadrícula 3×3 de "L" libre / "X" ocupado), imprime la primera fila
+completa, el asiento en la fila 1 columna 2, y luego recorre todas las filas con un for para imprimir cada
+una.
+"""
+
+asientos = [
+    ["L", "X", "L"],
+    ["X", "X", "L"],
+    ["L", "L", "X"]
+]
+
+print(asientos[0])
+print(asientos[1][2])
+for fila in asientos:
+    print(fila)
+
+"""
+Con ventas_vendedores (nombre + 3 ventas por vendedor), calcula e imprime, para cada vendedor, su
+nombre y el total de sus ventas.
+"""
+
+ventas_vendedores = [
+    ["Marta", 320, 450, 275],
+    ["Julio", 180, 200, 210],
+
+]
+
+for vendedor in ventas_vendedores:
+    nombre = vendedor[0]
+    ventas = vendedor[1:]
+    total = sum(ventas)
+    print(f"{nombre}: total de ventas ${total}")
+
+## Tuplas
+
+"""
+Crea una tupla color = (120, 200, 50) que representa un color en RGB. Imprímela completa, cada
+canal por separado, y su type() .
+"""
+
+color = (120, 200, 50)
+print(color)
+print(color[0], color[1], color[2])
+print(type(color))
+
+"""
+Usa una función calcular_brillo(c) que devuelva el promedio de los 3 canales de un color, para
+comparar color_a = (120, 200, 50) contra color_b = (10, 10, 10) e imprimir cuál es más
+brillante.
+"""
+
+color_a = (120, 200, 50)
+color_b = (10, 10, 10)
+
+def calcular_brillo(c):
+    return sum(c) / 3
+
+brillo_a = calcular_brillo(color_a)
+brillo_b = calcular_brillo(color_b)
+print(f"Brillo A: {round(brillo_a, 2)}")
+print(f"Brillo B: {round(brillo_b, 2)}")
+
+if brillo_a > brillo_b:
+    print("El color A es más brillante")
+else:
+    print("El color B es más brillante")
+
+
+## Desafio final
+
+"""
+Vas a recibir una lista de equipos, donde cada equipo es una lista con el nombre seguido de 3 puntajes de
+ronda, por ejemplo: ["Los Rayos", 15, 20, 18] . Con esa lista de equipos, tu programa debe:
+1. Con un for , calcular el total de puntos de cada equipo (la suma de sus 3 rondas) e imprimir, para cada
+uno, su nombre, su total, y su clasificación.
+2. Escribir una función clasificar_equipo(total) que devuelva "Campeón" si el total es 60 o más,
+"Finalista" si es de 40 a 59, y "Participante" si es menor a 40.
+3. Encontrar cuál equipo tiene el total más alto.
+4. Con un while , simular una ronda bonus para ese equipo: cada vuelta suma 5 puntos extra hasta que
+su total llegue o supere los 70 puntos. Contar cuántas rondas bonus tomó, e imprimir el nombre del equipo,
+las rondas necesarias, y el total final tras la ronda bonus.
+5. Guardar el resultado del campeonato en una tupla (nombre, clasificación) con el nombre del
+equipo que tuvo el total más alto y su clasificación, e imprimirla.
+"""
+
+
+
+def clasificar_equipo(total):
+    if total >= 60:
+        return "Campeón"
+    elif total >= 40:
+        return "Finalista"
+    else:
+        return "Participante"
+
+
+
+equipos = [
+    ["Los Rayos", 15, 20, 18],
+    ["Estrellas FC", 22, 19, 21],
+    ["Team Nova", 10, 12, 8],
+]
+
+puntuacion_maxima = 0
+
+print("Equipos participantes")
+for equipo in equipos:
+    nombre_equipo = equipo[0]
+    puntuacion_equipo = sum(equipo[1:])
+    clasificacion_equipo = clasificar_equipo(puntuacion_equipo)
+    if puntuacion_equipo > puntuacion_maxima:
+        puntuacion_maxima = puntuacion_equipo
+        equipo_ganador = equipo
+print(f"{nombre_equipo}: total de puntos {puntuacion_equipo}, clasificación: {clasificacion_equipo}")    
+
+print("---------------------------------")
+print("Equipo ganador:", equipo_ganador[0])
+
+puntuacion_equipo_ganador = sum(equipo_ganador[1:])
+
+rondas_bonus = 0
+puntuacion_ronda_bonus = 5
+
+while puntuacion_equipo_ganador < 70:
+    puntuacion_equipo_ganador += puntuacion_ronda_bonus
+    rondas_bonus += 1
+
+print("---------------------------------")
+print("Rondas bonus necesarias", equipo_ganador[0])
+print("---Total rondas:", puntuacion_equipo_ganador)
+print("---Puntuacion final", puntuacion_equipo_ganador)
+
+print("---------------------------------")
+resultado_campeonato_tupla = (equipo_ganador[0], clasificar_equipo(puntuacion_equipo_ganador))
+print(resultado_campeonato_tupla)
